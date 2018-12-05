@@ -21,5 +21,10 @@ post_id = collection.insert_one(post).inserted_id
 print("Document created")
 
 t = Timer(10.0, update_post)
-t.start()  # after 30 seconds, "update the document"
+t.start()  # after 10 seconds, "update the document & send message to rabbitmq"
 
+t = Timer(10.0, update_post)
+t.start()  # after 10 seconds, "update the document & send message to rabbitmq"
+
+t = Timer(10.0, update_post)
+t.start()  # after 10 seconds, "update the document & send message to rabbitmq"
