@@ -7,7 +7,7 @@ import rbmq_send
 def update_post():
     post['date'] = datetime.datetime.utcnow()
     collection.update_one({'_id': post_id}, {"$set": post}, upsert=False)
-    rbmq_send.send_message("Message produced at : " + post['date'])
+    rbmq_send.send_message("Message produced at : " + str(post['date']))
 
 client = pymongo.MongoClient("mongodb://" + os.environ['MONGOSERVER']+ ":27017/")
 db = client.test_database
@@ -20,9 +20,6 @@ post = {"author": "Mike",
 post_id = collection.insert_one(post).inserted_id
 print("Document created")
 
-i = 1
-while i < 6:
-    #send 5 messages with 10 second gap
-    t = Timer(10.0, update_post)
-    t.start()  # after 30 seconds, "update the document"
+t = Timer(10.0, update_post)
+t.start()  # after 30 seconds, "update the document"
 
