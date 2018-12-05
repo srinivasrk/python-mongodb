@@ -11,7 +11,7 @@ def send_message(message_body):
     channel.queue_declare(queue='tasks')
 
     channel.basic_publish(exchange='',
-                          routing_key='task',
+                          routing_key='tasks',
                           body=message_body)
     print(" [x] Sent 'Hello World!'")
 
