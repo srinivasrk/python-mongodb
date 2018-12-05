@@ -8,7 +8,7 @@ def send_message(message_body):
         pika.ConnectionParameters(os.environ['RABBITMQ_SERVER'], 5672, '/', credentials))
     channel = connection.channel()
 
-    channel.queue_declare(queue='tasks')
+    channel.queue_declare(queue='tasks', durable=True)
 
     channel.basic_publish(exchange='',
                           routing_key='tasks',
