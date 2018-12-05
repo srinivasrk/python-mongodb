@@ -23,8 +23,8 @@ print("Document created")
 t = Timer(10.0, update_post)
 t.start()  # after 10 seconds, "update the document & send message to rabbitmq"
 
-t = Timer(10.0, update_post)
+t = Timer(20.0, update_post)
 t.start()  # after 10 seconds, "update the document & send message to rabbitmq"
 
-t = Timer(10.0, update_post)
+t = Timer(30.0, update_post)
 t.start()  # after 10 seconds, "update the document & send message to rabbitmq"
